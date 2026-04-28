@@ -1,16 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-
-const navItems = [
-  { path: '/', label: 'Home', icon: 'home' },
-  { path: '/career', label: 'Career', icon: 'work' },
-  { path: '/events', label: 'Events', icon: 'event' },
-  { path: '/insights', label: 'Insights', icon: 'article' },
-  { path: '/profile', label: 'Profile', icon: 'person' }
-];
+import { useTranslation } from '../hooks/useTranslation';
 
 export const BottomNav: React.FC = () => {
+  const { t } = useTranslation();
+
+  const navItems = [
+    { path: '/', label: t('nav.home'), icon: 'home' },
+    { path: '/career', label: t('nav.career'), icon: 'work' },
+    { path: '/events', label: t('nav.events'), icon: 'event' },
+    { path: '/insights', label: t('nav.insights'), icon: 'article' },
+    { path: '/profile', label: t('nav.profile'), icon: 'person' }
+  ];
+
   const triggerHaptic = async () => {
     try {
       await Haptics.impact({ style: ImpactStyle.Light });
