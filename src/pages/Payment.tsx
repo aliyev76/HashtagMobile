@@ -12,11 +12,11 @@ const Payment: React.FC = () => {
           <div className="flex items-center gap-4">
             <button 
               onClick={() => navigate(-1)}
-              className="p-2 rounded-full hover:bg-[#f2f4f6] transition-colors active:scale-95 duration-200 text-[#565e74]"
+              className="p-1 rounded-full hover:bg-[#f2f4f6] transition-colors active:scale-95 duration-200 text-[#565e74]"
             >
               <span className="material-symbols-outlined font-bold">arrow_back</span>
             </button>
-            <span className="text-[#ba0013] font-black italic tracking-tighter text-xl">Hashtag</span>
+            <img src="/hashtag-fixed.png" alt="Hashtag" className="h-6 w-auto" />
           </div>
           <div className="flex items-center">
             <div className="h-8 w-8 rounded-full bg-[#e0e3e5] overflow-hidden border border-[#eceef0]">

@@ -38,12 +38,20 @@ export const BottomNav: React.FC = () => {
                   p-2 rounded-2xl transition-all duration-300 flex items-center justify-center
                   ${isActive ? "bg-[#ba0013]/10 scale-110" : "bg-transparent scale-100"}
                 `}>
-                  <span 
-                    className="material-symbols-outlined text-[24px]" 
-                    style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
-                  >
-                    {item.icon}
-                  </span>
+                  {item.path === '/' ? (
+                    <img 
+                      src="/hashtag-fixed.png" 
+                      alt="Home" 
+                      className={`w-6 h-6 object-contain ${isActive ? "" : "grayscale opacity-70"}`} 
+                    />
+                  ) : (
+                    <span 
+                      className="material-symbols-outlined text-[24px]" 
+                      style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
+                    >
+                      {item.icon}
+                    </span>
+                  )}
                 </div>
                 <span className={`
                   text-[10px] mt-1 font-bold uppercase tracking-widest transition-all duration-300

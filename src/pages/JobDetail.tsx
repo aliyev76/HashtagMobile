@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Bookmark, Share2, MapPin, Briefcase, Calendar, Clock, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Bookmark, Share2, MapPin, Briefcase, Clock } from 'lucide-react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { useNavigate } from 'react-router-dom';
 

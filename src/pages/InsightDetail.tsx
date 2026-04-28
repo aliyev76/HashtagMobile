@@ -16,7 +16,7 @@ const InsightDetail: React.FC = () => {
             >
               <span className="material-symbols-outlined font-bold">arrow_back</span>
             </button>
-            <h1 className="text-[#ba0013] font-black italic tracking-tighter text-xl font-[Manrope]">Hashtag</h1>
+            <img src="/hashtag-fixed.png" alt="Hashtag" className="h-6 w-auto" />
           </div>
           <div className="flex items-center gap-2">
             <img 

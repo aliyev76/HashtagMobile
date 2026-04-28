@@ -16,7 +16,7 @@ export const CVBuilder: React.FC = () => {
           >
             <span className="material-symbols-outlined">arrow_back</span>
           </button>
-          <h1 className="text-xl font-black text-[#e31e24] tracking-tighter italic">Hashtag</h1>
+          <img src="/hashtag-fixed.png" alt="Hashtag" className="h-6 w-auto" />
         </div>
         <div className="flex items-center gap-3">
           <button className="hidden sm:flex items-center gap-2 px-4 py-2 text-[#565e74] font-semibold text-[14px] hover:bg-[#f2f4f6] transition-colors rounded-lg">

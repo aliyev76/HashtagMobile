@@ -8,10 +8,12 @@ const Insights: React.FC = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#eceef0] h-16 flex items-center px-4 pt-safe">
         <div className="flex justify-between items-center w-full px-4 max-w-7xl mx-auto">
           <div className="flex items-center gap-2">
-            <button className="text-[#ba0013] transition-colors p-2 rounded-full active:scale-95 duration-200">
-              <span className="material-symbols-outlined text-2xl font-bold">rocket_launch</span>
+            <button 
+              onClick={() => window.location.href = '/'}
+              className="p-1 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all active:scale-95 duration-200 rounded-xl overflow-hidden"
+            >
+              <img src="/hashtag-fixed.png" alt="Hashtag Logo" className="h-8 w-auto" />
             </button>
-            <h1 className="text-xl font-black text-[#ba0013] tracking-tighter italic font-[Manrope]">Hashtag</h1>
           </div>
           <div className="flex items-center gap-3">
             <button className="text-[#565e74] hover:bg-[#f2f4f6] transition-colors p-2 rounded-full active:scale-95 duration-200">

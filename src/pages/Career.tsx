@@ -1,16 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Career: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#f7f9fb] text-[#191c1e] min-h-screen pb-32 font-[Manrope]">
       {/* TopAppBar */}
       <header className="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-neutral-100 dark:border-neutral-800 shadow-sm pt-safe">
         <div className="flex justify-between items-center w-full px-6 py-4">
           <div className="flex items-center gap-4">
-            <button className="p-1 text-slate-600 dark:text-slate-400 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all active:scale-95 duration-200">
-              <span className="material-symbols-outlined">rocket_launch</span>
+            <button 
+              onClick={() => navigate('/')}
+              className="p-1 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all active:scale-95 duration-200 rounded-xl overflow-hidden"
+            >
+              <img src="/hashtag-fixed.png" alt="Hashtag Logo" className="h-8 w-auto" />
             </button>
-            <span className="text-xl font-black text-red-600 dark:text-red-500 tracking-tighter">Hashtag</span>
           </div>
           <div className="flex items-center gap-3">
             <button className="p-1 text-slate-600 dark:text-slate-400 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all active:scale-95 duration-200">

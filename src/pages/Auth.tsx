@@ -1,14 +1,50 @@
 import React, { useState } from 'react';
 import { Mail, Lock, ArrowRight, User } from 'lucide-react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { supabase } from '../lib/supabase';
+import { useNavigate } from 'react-router-dom';
 
 export const Auth: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleAction = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     try { await Haptics.impact({ style: ImpactStyle.Medium }); } catch {}
-    // Placeholder logic
+
+    if (isLogin) {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        alert(error.message);
+      } else {
+        navigate('/');
+      }
+    } else {
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+          },
+        },
+      });
+      if (error) {
+        alert(error.message);
+      } else {
+        alert('Kayıt başarılı! Lütfen e-posta adresinizi doğrulayın.');
+        setIsLogin(true);
+      }
+    }
+    setLoading(false);
   };
 
   const toggleMode = async () => {
@@ -23,6 +59,9 @@ export const Auth: React.FC = () => {
       <div className="absolute bottom-[-100px] left-[-100px] w-64 h-64 bg-[var(--color-secondary)] opacity-10 rounded-full blur-3xl mix-blend-multiply" />
       
       <div className="flex-1 flex flex-col justify-center relative z-10">
+        <div className="flex justify-center mb-10">
+          <img src="/logo.jpg" alt="Hashtag Logo" className="h-16 w-auto rounded-2xl shadow-sm" />
+        </div>
         <div className="mb-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <h1 className="text-4xl font-extrabold tracking-tight text-[var(--color-secondary)] mb-3">
             {isLogin ? 'Hoş Geldin' : 'Kariyerine Başla'}
@@ -41,6 +80,8 @@ export const Auth: React.FC = () => {
                 <input 
                   type="text" 
                   placeholder="John Doe" 
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   className="w-full bg-white h-14 pl-12 pr-4 rounded-xl border border-gray-200 focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
                 />
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -54,6 +95,8 @@ export const Auth: React.FC = () => {
               <input 
                 type="email" 
                 placeholder="name@example.com" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-white h-14 pl-12 pr-4 rounded-xl border border-gray-200 focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
               />
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -66,6 +109,8 @@ export const Auth: React.FC = () => {
               <input 
                 type="password" 
                 placeholder="••••••••" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-white h-14 pl-12 pr-4 rounded-xl border border-gray-200 focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
               />
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -80,10 +125,11 @@ export const Auth: React.FC = () => {
 
           <button 
             type="submit" 
-            className="w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-container)] active:scale-[0.98] text-white h-14 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-[0_4px_14px_rgba(186,0,19,0.3)] animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200"
+            disabled={loading}
+            className="w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-container)] active:scale-[0.98] disabled:opacity-50 text-white h-14 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-[0_4px_14px_rgba(186,0,19,0.3)] animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200"
           >
-            {isLogin ? 'Giriş Yap' : 'Kayıt Ol'}
-            <ArrowRight className="w-5 h-5" />
+            {loading ? 'Yükleniyor...' : (isLogin ? 'Giriş Yap' : 'Kayıt Ol')}
+            {!loading && <ArrowRight className="w-5 h-5" />}
           </button>
         </form>
 

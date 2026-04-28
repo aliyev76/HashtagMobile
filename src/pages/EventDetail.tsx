@@ -16,7 +16,7 @@ export const EventDetail: React.FC = () => {
             <span className="material-symbols-outlined text-[#191c1e]">arrow_back</span>
           </button>
           <div className="flex items-center gap-2">
-            <span className="font-[Manrope] text-[24px] text-[#ba0013] italic font-black tracking-tighter">#</span>
+            <img src="/hashtag-fixed.png" alt="Hashtag" className="h-6 w-auto" />
             <h1 className="font-[Manrope] text-[14px] font-bold uppercase tracking-widest text-[#565e74]">Event Details</h1>
           </div>
           <button className="w-10 h-10 flex items-center justify-end rounded-full active:bg-[#eceef0] transition-colors">

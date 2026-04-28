@@ -1,15 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Dashboard: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#f7f9fb] font-[Manrope] text-[#191c1e] min-h-screen pb-32">
       {/* TopAppBar */}
       <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-neutral-100 dark:border-neutral-800 shadow-sm z-50 pt-safe">
         <div className="flex items-center gap-3">
-          <button className="p-2 text-red-600 dark:text-red-500 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors active:scale-95 duration-200 rounded-full">
-            <span className="material-symbols-outlined">rocket_launch</span>
+          <button 
+            onClick={() => navigate('/')}
+            className="p-1 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors active:scale-95 duration-200 rounded-xl overflow-hidden"
+          >
+            <img src="/hashtag-fixed.png" alt="Hashtag Logo" className="h-8 w-auto" />
           </button>
-          <span className="text-xl font-black text-red-600 dark:text-red-500 tracking-tighter font-[Manrope]">Hashtag</span>
         </div>
         <div className="flex items-center gap-3">
           <button className="p-2 text-slate-600 dark:text-slate-400 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors rounded-full active:scale-95 duration-200">
@@ -85,13 +89,19 @@ export const Dashboard: React.FC = () => {
         <section className="pt-6 mt-6">
           <div className="flex items-center justify-between mb-3 border-b border-gray-100 pb-2">
             <h2 className="font-[Manrope] text-[20px] font-bold">Senin İçin Önerilen Fırsatlar</h2>
-            <button className="text-[#ba0013] font-bold text-sm flex items-center gap-1 hover:underline">
+            <button 
+              onClick={() => navigate('/career')}
+              className="text-[#ba0013] font-bold text-sm flex items-center gap-1 hover:underline"
+            >
               Tümünü Gör <span className="material-symbols-outlined text-sm">chevron_right</span>
             </button>
           </div>
           <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 hide-scrollbar">
             {/* Job Card */}
-            <div className="flex-none w-[280px] bg-white border border-slate-100 rounded-2xl shadow-sm p-4 flex flex-col gap-4">
+            <div 
+              onClick={() => navigate('/job/1')}
+              className="flex-none w-[280px] bg-white border border-slate-100 rounded-2xl shadow-sm p-4 flex flex-col gap-4 cursor-pointer"
+            >
               <div className="flex justify-between items-start">
                 <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 p-2">
                   <img alt="Google" className="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANnUZYU6rS-XLWc_s8KOOOPV8Y1Dy7i7Hh9S5tZb7gp_FrnfOIwbOnTWm8VEC15KVc4pY06P433sjLs6uOz4diWPXmI8jbFy81EP8tTPCb5gYyMesRc_HtNKP_7ry_xL2VGU6cv7D_v9QpdWmoT_YcjrBLD_fcgj72dbeNu0ZU6pmR9p6Vba7aO0HS365-C0NoHQ9AvKNWtU0X5zBEqAXJkRTThlc_j6pxQISKSid6IuU_xy0BwpCvi9Y50MSmd_GMKv9lnTEW9bTF"/>
@@ -110,7 +120,10 @@ export const Dashboard: React.FC = () => {
             </div>
 
             {/* Event Card */}
-            <div className="flex-none w-[280px] bg-white border border-slate-100 rounded-2xl shadow-sm overflow-hidden flex flex-col">
+            <div 
+              onClick={() => navigate('/event/1')}
+              className="flex-none w-[280px] bg-white border border-slate-100 rounded-2xl shadow-sm overflow-hidden flex flex-col cursor-pointer"
+            >
               <div className="h-28 relative">
                 <img alt="Tech Event" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6CngUqfFDIoyjVWHFugoDbCeklweKNYUKUZr4rai6nuZxWCYZukYGpVyGW3jF02QcmaBIJ_0xcKLRf8Md9iBRsvbrR6Cj0tmmjvebxVcjQTWYQpIzV2IaKCI8jLzpSRTfyWqDXrkAR4uRrB5fZ5mgY7P0RMwwg8wxMOgy15PE8MsgyD3xCyOYCUtsMkxouiyGVjdtIewJPuR4m2zjUiJ3HZ0eISAjKKlvzciU5E4woSxRijIMgRbp9qZ2pTXqHVPBBvCOOzEuMQig"/>
                 <div className="absolute top-2 left-2 px-2 py-1 bg-white/90 backdrop-blur-sm rounded-lg flex flex-col items-center shadow-sm">
@@ -127,68 +140,74 @@ export const Dashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Course/Job mix card */}
-            <div className="flex-none w-[280px] bg-white border border-slate-100 rounded-2xl shadow-sm p-4 flex flex-col gap-4">
+            {/* Insight mix card */}
+            <div 
+              onClick={() => navigate('/insight/1')}
+              className="flex-none w-[280px] bg-white border border-slate-100 rounded-2xl shadow-sm p-4 flex flex-col gap-4 cursor-pointer"
+            >
               <div className="flex justify-between items-start">
                 <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 p-2 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[#ba0013]">terminal</span>
+                  <span className="material-symbols-outlined text-[#ba0013]">auto_stories</span>
                 </div>
               </div>
               <div>
-                <h3 className="font-bold text-lg leading-tight">Python for Data Science</h3>
-                <p className="text-sm text-[#565e74]">Hashtag Academy • 12 Saat</p>
+                <h3 className="font-bold text-lg leading-tight">Geleceğin Meslekleri</h3>
+                <p className="text-sm text-[#565e74]">Hashtag Insights • 5 dk okuma</p>
               </div>
               <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-2">
                 <div className="bg-[#ba0013] h-full w-2/3"></div>
               </div>
-              <p className="text-[10px] text-[#565e74] font-medium">Eğitimin %65'i tamamlandı</p>
-              <button className="mt-auto w-full py-2 bg-slate-900 text-white font-bold rounded-lg text-sm active:scale-95 transition-transform">Devam Et</button>
+              <button className="mt-auto w-full py-2 bg-slate-900 text-white font-bold rounded-lg text-sm active:scale-95 transition-transform">Oku</button>
             </div>
           </div>
         </section>
 
         {/* Bento Grid Bottom Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          {/* Hashtag Card Section */}
-          <div className="bg-slate-900 rounded-2xl p-6 text-white overflow-hidden relative group min-h-[220px]">
+          {/* My Tickets / Payment Link Section */}
+          <div 
+            onClick={() => navigate('/my-tickets')}
+            className="bg-slate-900 rounded-2xl p-6 text-white overflow-hidden relative group min-h-[220px] cursor-pointer"
+          >
              <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
                    <div className="flex items-center gap-2 mb-4">
-                      <span className="material-symbols-outlined text-white">credit_card</span>
-                      <h2 className="font-bold text-lg tracking-tight">Hashtag Card</h2>
+                      <span className="material-symbols-outlined text-white">confirmation_number</span>
+                      <h2 className="font-bold text-lg tracking-tight">Biletlerim</h2>
                    </div>
-                   <p className="text-slate-400 text-sm font-medium">Güncel Bakiyen</p>
-                   <p className="text-3xl font-extrabold mt-1">₺2,450.00</p>
+                   <p className="text-slate-400 text-sm font-medium">Yaklaşan Etkinlik Sayısı</p>
+                   <p className="text-3xl font-extrabold mt-1">3 Adet</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 flex items-center justify-between border border-white/10 mt-6">
                    <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center text-white">
-                         <span className="material-symbols-outlined max-w-full" style={{fontVariationSettings: "'FILL' 1"}}>local_cafe</span>
+                         <span className="material-symbols-outlined max-w-full" style={{fontVariationSettings: "'FILL' 1"}}>qr_code_2</span>
                       </div>
                       <div>
-                         <p className="text-xs font-bold text-white">Kahve Dünyası</p>
-                         <p className="text-[10px] text-emerald-400 font-bold">%20 İndirim Kazandın!</p>
+                         <p className="text-xs font-bold text-white">Hashtag Summit 2024</p>
+                         <p className="text-[10px] text-emerald-400 font-bold">Bilet Hazır!</p>
                       </div>
                    </div>
                    <span className="material-symbols-outlined text-slate-400">chevron_right</span>
                 </div>
              </div>
-             {/* Abstract card graphic */}
              <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#ba0013] rounded-full opacity-30 group-hover:scale-110 transition-transform duration-500"></div>
-             <div className="absolute -right-10 top-10 w-48 h-48 border border-white/10 rounded-3xl rotate-45 group-hover:-rotate-12 transition-transform duration-700"></div>
           </div>
 
-          {/* Hashtag Academy Teaser */}
-          <div className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col justify-between">
+          {/* Hashtag Academy / Insights teaser */}
+          <div 
+            onClick={() => navigate('/insights')}
+            className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col justify-between cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+          >
              <div>
                 <div className="flex items-center justify-between mb-4">
                    <div className="flex items-center gap-2">
                       <span className="material-symbols-outlined text-[#ba0013]">auto_stories</span>
-                      <h2 className="font-bold text-lg tracking-tight">Hashtag Academy</h2>
+                      <h2 className="font-bold text-lg tracking-tight">Hashtag Insights</h2>
                    </div>
-                   <span className="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Trend</span>
+                   <span className="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Yeni</span>
                 </div>
-                <p className="font-[Manrope] font-bold text-xl mb-4 leading-snug">Yeni Yetkinlikler Kazan</p>
+                <p className="font-[Manrope] font-bold text-xl mb-4 leading-snug">Kariyerine Değer Katacak İçerikler</p>
                 <div className="flex gap-4 items-center p-3 bg-slate-50 rounded-xl border border-slate-100">
                    <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                       <img alt="Featured Course" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx6hf8dJ-mJcxPzKj3ck92ND3LUWE9lpM5IxdxFfGUhSWoE9XGQOk0u_MQd3bQo33mK7OJb2cQMlThtkEviXJS0iUiILfFSprHR50vnU1uLIoEdXTvcin1J-JHXUAhfEzULjQdbSnWgdEHQ94f1nPTk8uRxY6W9S-82q_VrAVCcJZayRRWOwo12kFajgdx5qKrvvqgx3nI1nyIBTynqrNlEe9zSnNxcoysjjdLawE18ZCfJw2DzQGKzexbClYhsVDvWDzGlraZDHCQ"/>
@@ -196,14 +215,14 @@ export const Dashboard: React.FC = () => {
                    <div>
                       <p className="text-sm font-bold mb-0.5">Yapay Zeka ile Verimlilik</p>
                       <div className="flex items-center gap-2 text-[10px] text-[#565e74] font-medium">
-                         <span className="flex items-center gap-0.5"><span className="material-symbols-outlined text-[12px]">schedule</span> 4.5 Saat</span>
-                         <span className="flex items-center gap-0.5"><span className="material-symbols-outlined text-[12px]">star</span> 4.9</span>
+                         <span className="flex items-center gap-0.5"><span className="material-symbols-outlined text-[12px]">schedule</span> 5 dk</span>
+                         <span className="flex items-center gap-0.5"><span className="material-symbols-outlined text-[12px]">visibility</span> 12.5k</span>
                       </div>
                    </div>
                 </div>
              </div>
              <button className="mt-6 w-full py-3 bg-slate-900 text-white font-bold rounded-xl text-sm flex items-center justify-center gap-2 group">
-                Eğitimlere Göz At
+                Hepsini Keşfet
                 <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
              </button>
           </div>
