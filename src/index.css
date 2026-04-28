@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ba0013;
+  --color-primary-container: #e31e24;
+  --color-secondary: #565e74;
+  --color-tertiary: #4e5c72;
+  --color-background: #f7f9fb;
+  --color-surface: #f7f9fb;
+  --color-on-background: #191c1e;
+
+  --font-sans: "Manrope", sans-serif;
+  
+  --radius-lg: 1rem;
+  --radius-md: 0.5rem;
+}
+
+@layer base {
+  :root {
+    --background: 210 20% 98%; /* #f7f9fb inside HSL approx */
+    --foreground: 200 8% 11%;  /* #191c1e inside HSL approx */
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-background text-[var(--color-on-background)] font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .tap-highlight-transparent {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
